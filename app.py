@@ -15,8 +15,13 @@ def hello_world():
 @app.route('/home/<name>', methods=['POST', 'GET'])
 def home(name):
     session['name'] = name
+    mylist = ['one', 'two', 'three', 'four']
+    listdict = [
+        {'name': 'Zach'},
+        {'name': 'Jeoms'},
+        {'name': 'XXXL'}]
     name = name.capitalize()
-    return render_template('home.html', name=name)
+    return render_template('home.html', name=name, display=True, mylist=mylist, listdict=listdict)
 
 
 @app.route('/json', methods=['POST', 'GET'])
@@ -47,7 +52,7 @@ def form():
         name = request.form['name']
         location = request.form['location']
         # return f"Hello {name}, you are from {location} you have submitted the form successfully!"
-        return redirect(url_for('home', name=name, location=location))
+        return render_template('base.html', name=name, location=location)
 
 #
 # @app.route('/process', methods=['POST'])

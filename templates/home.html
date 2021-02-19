@@ -1,1 +1,17 @@
-<h1>Hi! {{name}}, You are on the homepage</h1>'
+<h1>Hi! {{name}}, You are on the homepage</h1>
+
+{% if display %}
+    <h2>This is being displayed</h2>
+{% else %}
+    <h2>The value is False</h2>
+{% endif %}
+
+{% for i in mylist %}
+<h3>{{ i }}</h3>
+{% endfor %}
+
+{% for i in listdict %}
+    <h4>{{ i .name }}</h4>
+{% endfor %}
+
+<img src="{{ url_for('static', filename='pngfind.com-jebaited-png-1122535.png') }}">
